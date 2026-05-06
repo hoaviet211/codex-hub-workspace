@@ -1,12 +1,12 @@
 # Public Development Strategy
 
-Codex Hub is moving from a private working system into a public proof-of-work repository.
+Codex Hub Workspace is moving from a private working system into a public product project.
 
 The goal is not to expose every private task. The goal is to show a clear operating model for AI-assisted work: scope first, task trace, acceptance criteria, verification, reusable artifact, and reviewed memory.
 
 ## Strategic Position
 
-Codex Hub should be developed publicly as an operating system for controlled AI work.
+Codex Hub Workspace should be developed publicly as an operating system for controlled AI work.
 
 Core message:
 
@@ -15,6 +15,22 @@ AI is useful when repeated work becomes a controlled workflow with scope, eviden
 ```
 
 This repo should prove that message through docs, workflows, scripts, examples, and small runtime components.
+
+## Project Ownership Model
+
+Codex Hub Workspace is a managed project inside the private Codex Hub operating workspace.
+
+```text
+private Codex Hub
+  -> projects/codex-hub-workspace
+      -> public product repo
+```
+
+The private Hub remains the working environment for real client context, private task notes, and internal artifacts.
+
+The public project contains the reusable product core: policies, workflows, skills, scripts, public-safe examples, and architecture notes.
+
+This separation lets the project develop in public without exposing the operational instance that produced it.
 
 ## Private To Public Boundary
 
@@ -144,7 +160,7 @@ Done when:
 
 ## Roadmap
 
-### Phase 1: Public Baseline
+### Phase 1: Public Project Baseline
 
 Purpose: make the repo safe, readable, and credible.
 
@@ -159,7 +175,8 @@ Work:
 Done when:
 
 - repo can be shared without explaining the cleanup story
-- public reader understands what Codex Hub is in 5 minutes
+- public reader understands what Codex Hub Workspace is in 5 minutes
+- private Hub registry tracks this repo as an active public project
 
 ### Phase 2: Workflow Proof
 
@@ -308,11 +325,12 @@ Quality metrics:
 ## Near-Term Action Plan
 
 1. Keep the new public repo as the only public-facing history.
-2. Make the old repo private or treat it as contaminated history.
-3. Add a public safety checklist and scanner script.
-4. Add one sanitized example task with acceptance criteria.
-5. Add one public development log entry per week.
-6. Package the first service offer around task/AC workflow setup.
+2. Manage the public repo from `projects/codex-hub-workspace` inside the private Hub.
+3. Make the old repo private or treat it as contaminated history.
+4. Add a public safety checklist and scanner script.
+5. Add one sanitized example task with acceptance criteria.
+6. Add one public development log entry per week.
+7. Package the first service offer around task/AC workflow setup.
 
 ## Working Rule
 

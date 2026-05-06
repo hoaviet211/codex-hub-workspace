@@ -15,6 +15,21 @@ Codex Hub is a local-first workspace for:
 - reviewing memory before it becomes trusted context
 - tracking project state across real client and internal projects
 
+## Project Model
+
+`codex-hub-workspace` is developed as a public product project, not just a documentation mirror.
+
+The private Codex Hub workspace is the internal operating instance. It can contain real client context, private task notes, and raw artifacts.
+
+This public project contains the reusable core: workflow policy, skills, scripts, templates, reviewed architecture notes, and public-safe examples.
+
+```text
+private Codex Hub = operating instance
+codex-hub-workspace = public product core
+```
+
+The public repo is managed as a project inside the private Hub project registry, then published through its own clean Git history.
+
 The design principle is simple:
 
 ```text
