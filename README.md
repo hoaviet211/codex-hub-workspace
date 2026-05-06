@@ -26,7 +26,7 @@ Release status:
 | Task gate scripts | Available |
 | Memory service | Experimental |
 | Orchestrator helper | Experimental |
-| Web dashboard | Not included |
+| WebOS dashboard | Experimental |
 | Production deployment | Not included |
 
 ## What This Project Provides
@@ -37,6 +37,7 @@ Release status:
 - Scripts for task checks, daily reviews, context export, and memory-aware skill runs
 - A local memory-service prototype with reviewed-memory direction
 - An orchestrator helper prototype for context composition and handoff workflows
+- A local WebOS dashboard prototype for workspace visibility and manual review flows
 
 ## Release Definition
 
@@ -67,6 +68,7 @@ codex-hub-workspace/
 +-- workflows/
 +-- memory-service/
 +-- orchestrator/
++-- apps/webos/
 +-- docs/
 `-- README.md
 ```
@@ -81,6 +83,7 @@ codex-hub-workspace/
 | `workflows/` | Operating docs for prompt patterns, pipeline, DoD, demo gates, and reviews. |
 | `memory-service/` | Experimental reviewed-memory backend. |
 | `orchestrator/` | Experimental helper pipeline for context composition and handoff generation. |
+| `apps/webos/` | Experimental localhost dashboard for workspace visibility, checks, actions, and reviewed memory candidates. |
 | `docs/` | Product strategy, release notes, architecture notes, and public examples. |
 
 ## Core Workflow
@@ -132,6 +135,7 @@ This project is not:
 - [workflows/prompt-cheatsheet.md](workflows/prompt-cheatsheet.md)
 - [workflows/standard-pipeline.md](workflows/standard-pipeline.md)
 - [workflows/definition-of-done.md](workflows/definition-of-done.md)
+- [apps/webos/README.md](apps/webos/README.md)
 - [docs/public-development-strategy.md](docs/public-development-strategy.md)
 
 ## Roadmap
@@ -141,5 +145,13 @@ Near-term priorities:
 1. Add a public release checklist.
 2. Add a public safety scanner for repo checks.
 3. Add sanitized example tasks with acceptance criteria.
-4. Clarify which runtime components are experimental.
+4. Clarify WebOS, memory-service, and orchestrator integration boundaries.
 5. Package the first reusable workflow for small-business AI operations.
+
+## Packaging Strategy
+
+WebOS is included directly in this repository under `apps/webos/`.
+
+This is intentional for the current release: a normal `git clone` gets the workspace docs, scripts, memory-service, orchestrator, and WebOS source together.
+
+Submodules are avoided for now because they require extra clone commands and are easy to miss.

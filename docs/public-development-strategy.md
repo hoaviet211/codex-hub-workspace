@@ -18,6 +18,7 @@ It provides:
 - helper scripts
 - reviewed-memory direction
 - experimental runtime components
+- experimental WebOS dashboard
 
 It does not try to expose implementation history. Public development should focus on reusable project assets.
 
@@ -200,11 +201,39 @@ Work:
 - document memory-service direction
 - document reviewed memory flow
 - document orchestrator helper role
+- document WebOS dashboard boundary
 - separate experimental and supported behavior
 
 Done when:
 
 - public docs show which components are stable, experimental, or planned
+
+## Packaging Strategy
+
+Current packaging choice:
+
+```text
+monorepo copy: apps/webos/
+```
+
+Reason:
+
+- normal `git clone` includes WebOS automatically
+- no submodule setup is required
+- release checks can scan the full source tree together
+- examples and docs can link to WebOS directly
+
+Deferred alternatives:
+
+- Git submodule: useful only if WebOS needs independent ownership, but clone requires `--recurse-submodules`.
+- Git subtree: useful if WebOS must keep independent history while still cloning with the main repo.
+- Package distribution: useful later if WebOS becomes installable as its own app.
+
+Default rule:
+
+```text
+Keep WebOS in the monorepo until independent release cadence becomes more valuable than clone simplicity.
+```
 
 ### Phase 5: Service Packaging
 
