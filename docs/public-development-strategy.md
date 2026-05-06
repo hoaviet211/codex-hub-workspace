@@ -1,150 +1,139 @@
 # Public Development Strategy
 
-Codex Hub Workspace is moving from a private working system into a public product project.
+Codex Hub Workspace is developed as a public product project.
 
-The goal is not to expose every private task. The goal is to show a clear operating model for AI-assisted work: scope first, task trace, acceptance criteria, verification, reusable artifact, and reviewed memory.
+The purpose of the public repository is to make the workflow model inspectable, reusable, and release-ready.
 
-## Strategic Position
+## Product Definition
 
-Codex Hub Workspace should be developed publicly as an operating system for controlled AI work.
+Codex Hub Workspace is a local-first operating workspace for controlled AI-assisted work.
 
-Core message:
+It provides:
 
-```text
-AI is useful when repeated work becomes a controlled workflow with scope, evidence, verification, and reuse.
-```
+- operating policy
+- task discipline
+- acceptance criteria flow
+- review gates
+- reusable skills
+- helper scripts
+- reviewed-memory direction
+- experimental runtime components
 
-This repo should prove that message through docs, workflows, scripts, examples, and small runtime components.
+It does not try to expose implementation history. Public development should focus on reusable project assets.
 
-## Project Ownership Model
+## Release Model
 
-Codex Hub Workspace is a managed project inside the private Codex Hub operating workspace.
+A release is a named project state that can be understood and reused by someone outside the original working context.
 
-```text
-private Codex Hub
-  -> projects/codex-hub-workspace
-      -> public product repo
-```
+Every release should define:
 
-The private Hub remains the working environment for real client context, private task notes, and internal artifacts.
+- what problem it addresses
+- which components are included
+- which components are experimental
+- what changed since the previous release
+- how the release was verified
+- known limitations
+- next planned improvements
 
-The public project contains the reusable product core: policies, workflows, skills, scripts, public-safe examples, and architecture notes.
+Release readiness requires:
 
-This separation lets the project develop in public without exposing the operational instance that produced it.
+- no confidential task notes
+- no generated runtime folders
+- no local machine paths
+- no credentials, tokens, or secrets
+- no raw client artifacts
+- clear README entrypoint
+- clear workflow or usage path
 
-## Private To Public Boundary
+## Release Boundary
 
-Keep private:
+Publish:
+
+- reusable workflow docs
+- reusable skills
+- task templates
+- checklists
+- scanner scripts
+- public-safe examples
+- release notes
+- architecture notes
+
+Keep out of releases:
 
 - real client task notes
 - raw workspace artifacts
 - personal machine paths
-- phone numbers, emails, account names, credentials, and project-specific secrets
-- unfinished commercial strategy with sensitive context
+- phone numbers and emails
+- credentials and project secrets
 - unreviewed memory candidates
 - generated runtime state
-
-Publish:
-
-- reusable skills
-- workflow docs
-- task templates
-- checkers and helper scripts
-- sanitized example tasks
-- architecture notes
-- public development logs
-- small demos that prove the workflow
 
 Decision rule:
 
 ```text
-If it teaches the workflow without exposing private context, it can be public.
-If it proves only one private client situation, keep it private or sanitize it into a generic example.
+Publish the reusable pattern, not the confidential situation that produced it.
 ```
 
 ## Development Pillars
 
-### 1. Task Discipline
+### 1. Product Clarity
 
-Every non-trivial public change should show:
-
-- goal
-- scope
-- constraints
-- acceptance criteria
-- verification result
-- remaining uncertainty
+The repo should explain what the project is, what release state it is in, and what a user can safely use today.
 
 Done when:
 
-- public docs explain the rule
-- templates support the rule
-- scripts can warn when the task gate is missing
+- README describes the current release, not implementation history
+- experimental components are labeled clearly
+- Start Here points to usable docs
 
-### 2. Reusable Workflow Assets
+### 2. Task Discipline
 
-The repo should grow by adding reusable assets, not chat-only advice.
+Every non-trivial project change should have a traceable goal, scope, acceptance criteria, verification, and remaining uncertainty.
+
+Done when:
+
+- task gate rules are documented
+- task templates are available
+- missing task traces can be detected
+
+### 3. Reusable Workflow Assets
+
+The repo should grow through reusable artifacts instead of one-off explanations.
 
 Priority assets:
 
 - task templates
 - operating checklists
 - prompt playbooks
-- review gates
+- definition of done
 - public-safe example reports
 - scanner scripts
 - handoff formats
 
-Done when:
+### 4. Release Safety
 
-- a new user can copy one workflow and apply it to their own work
-- examples show input, process, and verified output
+Public releases must be safe to inspect.
 
-### 3. Public Proof, Not Tool Hype
+Release checks should catch:
 
-Public updates should show operational proof:
+- local machine paths
+- generated folders
+- runtime state
+- obvious secret patterns
+- confidential task and artifact folders
+- client identifiers
 
-- what was broken
-- what rule or tool fixed it
-- what artifact remains
-- how it was verified
+### 5. Business Usefulness
 
-Avoid:
+The project should support sellable workflow services.
 
-- generic AI productivity claims
-- private client stories without sanitization
-- unexplained screenshots
-- large architecture claims without a runnable or readable artifact
-
-### 4. Local-First Safety
-
-Codex Hub should stay local-first and review-first.
-
-Public repo rules:
-
-- no browser-triggered command execution
-- no secrets in config
-- no generated runtime state committed
-- no automatic memory promotion
-- no public task notes with private client data
-
-Done when:
-
-- `.gitignore` blocks runtime state
-- docs state the safety boundary
-- scanners run before public commits
-
-### 5. Income Direction
-
-Public development should support sellable workflow services.
-
-Target service shape:
+Target service pattern:
 
 ```text
 SOP -> checklist -> template -> automation -> review gate -> report
 ```
 
-Initial service offers:
+Initial service directions:
 
 - AI task workflow setup for small teams
 - client intake to task/AC system
@@ -153,30 +142,24 @@ Initial service offers:
 - content approval workflow
 - owner visibility reporting
 
-Done when:
-
-- repo has 2-3 public examples that map a business problem to a repeatable workflow
-- README explains the business value without overselling
-
 ## Roadmap
 
-### Phase 1: Public Project Baseline
+### Phase 1: Release Baseline
 
-Purpose: make the repo safe, readable, and credible.
+Purpose: make the project understandable and safe to share.
 
 Work:
 
-- keep clean public history
-- add strategy doc
-- link strategy from README
-- keep private workspace out of the public repo
-- add public-safe contribution and scanning checklist
+- rewrite README around product and release state
+- add release checklist
+- add public safety scanner
+- label experimental components
 
 Done when:
 
-- repo can be shared without explaining the cleanup story
-- public reader understands what Codex Hub Workspace is in 5 minutes
-- private Hub registry tracks this repo as an active public project
+- a new reader understands the project in 5 minutes
+- release boundary is explicit
+- safety scan can run before push
 
 ### Phase 2: Workflow Proof
 
@@ -185,155 +168,70 @@ Purpose: show concrete workflows, not only policy.
 Work:
 
 - add sanitized example task notes
-- add example acceptance criteria
-- add example verification reports
-- add a public-safe daily review example
-- document how task notes become reusable artifacts
+- add acceptance criteria examples
+- add verification report examples
+- show before -> process -> output -> verification
 
 Done when:
 
-- at least 3 examples show before -> process -> output -> verification
+- at least 3 public examples demonstrate the workflow
 
 ### Phase 3: Tooling
 
-Purpose: make the workflow enforceable.
+Purpose: make the process enforceable.
 
 Work:
 
 - improve task-gate checker
-- add public-repo safety scanner
-- add example command wrappers
-- document how scripts should be used
-- keep tools small and inspectable
+- add release scanner
+- add command wrappers
+- document common usage commands
 
 Done when:
 
-- a contributor can run one or two commands before committing
-- scanner catches local paths, runtime folders, and obvious secrets
+- a contributor can run a small release check before committing
 
-### Phase 4: Runtime Model
+### Phase 4: Runtime Direction
 
-Purpose: explain and harden the local runtime components.
+Purpose: clarify active runtime architecture.
 
 Work:
 
-- document `memory-service`
+- document memory-service direction
 - document reviewed memory flow
 - document orchestrator helper role
-- separate deprecated helper ideas from active runtime direction
-- add architecture diagrams only where they clarify behavior
+- separate experimental and supported behavior
 
 Done when:
 
-- public reader understands what is production direction and what is experimental
+- public docs show which components are stable, experimental, or planned
 
-### Phase 5: Business Packaging
+### Phase 5: Service Packaging
 
-Purpose: turn the public proof into service offers.
+Purpose: turn the project into reusable business offerings.
 
 Work:
 
-- write 2-3 service briefs
+- write service briefs
 - map each service to repo artifacts
 - define delivery checklist
 - define demo and handover gates
-- publish selected case-study style examples without private data
 
 Done when:
 
-- Codex Hub can support outreach or client explanation without custom re-explaining each time
+- the repo can support client conversations without custom explanation each time
 
-## Public Content Cadence
+## Public Update Format
 
-Weekly public update format:
+Use this format for development logs:
 
 ```text
-Problem:
-Workflow gap:
-Change made:
+Release goal:
+Change:
 Artifact:
 Verification:
+Known limitation:
 Next:
 ```
 
-Good update topics:
-
-- task/AC traceability improvement
-- public safety scan
-- memory review flow
-- workflow template improvement
-- small tool that removes repeated manual work
-- sanitized business workflow example
-
-Avoid posting:
-
-- raw client data
-- unreviewed memory
-- private repo paths
-- long technical claims without an artifact link
-
-## Release Gate For Public Changes
-
-Before every public push:
-
-- run `git status --short`
-- scan for local paths and known private identifiers
-- confirm no generated runtime folders are staged
-- confirm no real client task note is included
-- confirm README or docs explain any new public-facing concept
-
-Minimum scan categories:
-
-```text
-Windows user-profile paths
-cloud-sync personal paths
-phone numbers
-emails
-GitHub token prefixes
-OpenAI/API key prefixes
-private key headers
-database connection strings
-generated dependency folders
-runtime state folders
-private workspace task folders
-private workspace artifact folders
-private project registry folders
-```
-
-## Success Metrics
-
-Operational metrics:
-
-- number of reusable workflows
-- number of public-safe examples
-- number of checks/scripts that prevent repeated mistakes
-- number of task notes with clear acceptance criteria
-
-Business metrics:
-
-- number of service offers derived from repo artifacts
-- number of public posts that link to proof artifacts
-- number of client conversations supported by this repo
-- number of repeated manual processes converted into checklist/template/tool
-
-Quality metrics:
-
-- no private data in public commits
-- clear boundary between active and experimental components
-- docs stay short enough to read and specific enough to execute
-
-## Near-Term Action Plan
-
-1. Keep the new public repo as the only public-facing history.
-2. Manage the public repo from `projects/codex-hub-workspace` inside the private Hub.
-3. Make the old repo private or treat it as contaminated history.
-4. Add a public safety checklist and scanner script.
-5. Add one sanitized example task with acceptance criteria.
-6. Add one public development log entry per week.
-7. Package the first service offer around task/AC workflow setup.
-
-## Working Rule
-
-Develop in private when the work contains real client context.
-
-Publish only the reusable pattern, sanitized artifact, checker, workflow, or lesson.
+This keeps public updates tied to project progress instead of implementation history.

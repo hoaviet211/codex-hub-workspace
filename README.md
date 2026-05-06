@@ -1,182 +1,129 @@
-# Codex Hub
+# Codex Hub Workspace
 
-Codex Hub is my working system for turning daily AI-assisted work into repeatable workflows, task traces, review gates, and reusable tools.
+Codex Hub Workspace is a local-first operating workspace for AI-assisted work.
 
-The goal is not to collect AI tools. The goal is to build an operating layer where business work can be described clearly, executed safely, verified, reviewed, and reused.
+It helps turn vague requests into scoped tasks, acceptance criteria, execution traces, verification notes, reusable workflows, and reviewed memory.
 
-## What This Repo Is
-
-Codex Hub is a local-first workspace for:
-
-- defining how I work with Codex and other agents
-- turning vague work into scoped tasks with Acceptance Criteria
-- saving useful outputs as artifacts instead of losing them in chat
-- building reusable skills, scripts, templates, and workflow docs
-- reviewing memory before it becomes trusted context
-- tracking project state across real client and internal projects
-
-## Project Model
-
-`codex-hub-workspace` is developed as a public product project, not just a documentation mirror.
-
-The private Codex Hub workspace is the internal operating instance. It can contain real client context, private task notes, and raw artifacts.
-
-This public project contains the reusable core: workflow policy, skills, scripts, templates, reviewed architecture notes, and public-safe examples.
+The project is built around one principle:
 
 ```text
-private Codex Hub = operating instance
-codex-hub-workspace = public product core
+SOP -> task -> acceptance criteria -> execution -> verification -> reusable artifact
 ```
 
-The public repo is managed as a project inside the private Hub project registry, then published through its own clean Git history.
+## Current Release
 
-The design principle is simple:
+This repository is an early development release.
 
-```text
-User = Brain
-Project = Body
-Codex = executor / reviewer / integrator
-WebOS = local cockpit and review surface
-Gemma = bounded curator and context compressor
-Memory = approved knowledge only
-```
+It is usable as a workflow and tooling foundation, but it is not a packaged application yet.
 
-## Why I Am Building It
+Release status:
 
-AI can generate output quickly, but speed alone is not enough.
+| Area | Status |
+|---|---|
+| Operating policy | Available |
+| Workflow docs | Available |
+| Local skills | Available |
+| Task gate scripts | Available |
+| Memory service | Experimental |
+| Orchestrator helper | Experimental |
+| Web dashboard | Not included |
+| Production deployment | Not included |
 
-The real operational problems are:
+## What This Project Provides
 
-- work starts without a clear definition of done
-- tasks disappear inside chat history
-- employees or agents produce output without review trails
-- automation is added before the SOP is clear
-- memory can become stale or wrong if it is accepted automatically
-- business owners cannot see what was done, why it was done, and how it was verified
+- Operating rules for working with Codex and agentic tools
+- Reusable skills for planning, requirements, coding, testing, security, DevOps, UI, and AI workflows
+- Workflow docs for task intake, definition of done, client demo gates, and operating review
+- Scripts for task checks, daily reviews, context export, and memory-aware skill runs
+- A local memory-service prototype with reviewed-memory direction
+- An orchestrator helper prototype for context composition and handoff workflows
 
-Codex Hub is my answer to that problem: a practical system for making AI-assisted work traceable, repeatable, and safer to delegate.
+## Release Definition
 
-## Current Development Focus
+A release of this project is not just a pushed commit.
 
-The current focus is moving from "AI helps me do tasks" to "AI helps me run a controlled work system."
+A release is a versioned project state with:
 
-Active themes:
+- clear purpose
+- included components
+- known limitations
+- verification result
+- upgrade or usage notes
+- no confidential workspace data
+- no generated runtime state
+- no secrets or machine-specific paths
 
-- **Task discipline**: every non-trivial task should have scope, constraints, Acceptance Criteria, progress, verification, and remaining uncertainty.
-- **Public sharing**: development progress should be readable from the GitHub README and selected artifacts, not only from private chat.
-- **Workflow proof**: each useful result should leave a reusable artifact, checklist, script, report, or demo.
-- **Income direction**: Codex Hub should support sellable workflow/automation services for small businesses, not just internal experimentation.
-- **Review-first memory**: extracted memory must go through candidate review before becoming canonical.
-- **Local safety**: WebOS and runtime tools stay local-first and must not become unsafe command-execution surfaces.
+This keeps the public project understandable, reusable, and safe to inspect.
 
 ## Repository Map
 
 ```text
-Codex hub/
+codex-hub-workspace/
 +-- AGENTS.md
 +-- QUICK-START.md
 +-- config.yaml
 +-- .codex/skills/
 +-- scripts/
 +-- workflows/
-+-- workspace/
 +-- memory-service/
 +-- orchestrator/
-+-- projects/
-`-- .orchestrator/
++-- docs/
+`-- README.md
 ```
 
 | Area | Purpose |
 |---|---|
-| `AGENTS.md` | Main operating policy: workflow, safety gates, skill routing, task rules, memory rules. |
-| `QUICK-START.md` | Short daily entrypoint for using the workspace. |
-| `config.yaml` | Hub manifest: roles, skills, memory backend, workflow policy, project registry pointers. |
-| `.codex/skills/` | Local skills for planning, requirements, coding, UI, testing, security, DevOps, AI workflows, and runtime work. |
-| `scripts/` | Reusable PowerShell/CMD helpers for checks, context export, task gates, and memory-aware skill runs. |
-| `workflows/` | Process docs: prompt playbook, standard pipeline, definition of done, client demo gate, operating review. |
-| `workspace/` | Lightweight operational state: task notes, artifacts, templates, short-lived memory, draft automations. |
-| `memory-service/` | Canonical memory backend with source, candidate, review, and approved memory layers. |
-| `orchestrator/` | Local Coding Orchestrator helper pipeline. It is helper-only, not the daily execution brain. |
-| `projects/` | Project registry area for real internal/client projects managed through this Hub. |
-| `.orchestrator/` | Runtime output and generated local state. Not the primary source of truth. |
+| `AGENTS.md` | Main operating policy for task flow, safety gates, skill routing, and memory rules. |
+| `QUICK-START.md` | Short entrypoint for using the workspace. |
+| `config.yaml` | Workspace manifest for roles, skills, memory backend, and workflow policy. |
+| `.codex/skills/` | Local Codex skills used by the workspace. |
+| `scripts/` | PowerShell/CMD helpers for checks, task gates, reviews, and context export. |
+| `workflows/` | Operating docs for prompt patterns, pipeline, DoD, demo gates, and reviews. |
+| `memory-service/` | Experimental reviewed-memory backend. |
+| `orchestrator/` | Experimental helper pipeline for context composition and handoff generation. |
+| `docs/` | Product strategy, release notes, architecture notes, and public examples. |
 
-## How Work Is Supposed To Flow
+## Core Workflow
 
 ```text
-brief -> task note -> Acceptance Criteria -> execution -> verification -> artifact -> review -> memory candidate if useful
+brief -> scope -> acceptance criteria -> execute -> verify -> artifact -> review
 ```
 
-For non-trivial work, the agent should decide early whether a task note is required.
+For non-trivial work, the workspace expects a task note or equivalent trace before implementation.
 
-A task note is required when the work has any of:
+A task trace should capture:
 
-- multiple execution steps
-- code, config, or public documentation changes
-- client-facing behavior
-- auth, security, deploy, data, or production risk
-- Acceptance Criteria
-- expected continuation across sessions
-- verification details that must be remembered
+- goal
+- scope
+- constraints
+- acceptance criteria
+- progress
+- verification
+- remaining uncertainty
 
-If no task note is created, the agent should state why.
+## Why This Exists
 
-## Development Log
+AI-assisted work becomes difficult to control when:
 
-Recent development themes:
+- tasks live only in chat history
+- the definition of done is unclear
+- output has no verification trail
+- automation is added before the SOP is stable
+- memory is trusted without review
+- owners cannot see what changed, why, and how it was checked
 
-- Added stronger operating policy around `Decision mode`, `Failure mode`, and `Efficiency mode`.
-- Added `Coach / Pair / Execute` collaboration modes to protect the user's own reasoning skill.
-- Added task-gate and daily-review tooling so missing task/AC trace becomes visible.
-- Reframed Codex Hub as an income-first workflow system, not a tool showcase.
-- Designed public sharing content around proof: task notes, artifacts, reports, SOPs, and review gates.
-- Studied Hermes Agent's Kanban model and identified the need for a future Codex Hub task kernel.
-
-## What This Can Become
-
-Codex Hub is moving toward a reusable operating model for small businesses that want employees or agents to use AI without losing control.
-
-The service shape is:
-
-```text
-SOP -> checklist -> template -> automation -> review gate -> report
-```
-
-Possible business-facing use cases:
-
-- customer support response workflow
-- lead follow-up workflow
-- content approval workflow
-- proposal or quotation workflow
-- internal task reporting workflow
-- AI usage permission and review checklist
-- small dashboard for owner visibility
+Codex Hub Workspace is a practical answer to that problem: make the work traceable, reviewable, reusable, and safer to delegate.
 
 ## Non-Goals
 
-Codex Hub is not trying to be:
+This project is not:
 
 - a generic chatbot wrapper
-- a replacement for human judgment
-- a production control plane that executes arbitrary commands from a browser
+- a hosted SaaS platform
+- a browser-based command executor
 - an automatic memory system that trusts every extracted note
+- a replacement for human judgment
 - a heavy project-management suite
-
-It is intentionally local-first, review-first, and workflow-first.
-
-## Public Sharing Direction
-
-I am starting to document the build in public through:
-
-- this README
-- [Public Development Strategy](docs/public-development-strategy.md)
-- concise repo maps
-- workflow artifacts
-- development notes
-- practical examples of turning real work into reusable systems
-
-The public narrative is:
-
-> AI becomes useful when it turns repeated work into a controlled workflow with scope, evidence, verification, and reuse.
 
 ## Start Here
 
@@ -185,3 +132,14 @@ The public narrative is:
 - [workflows/prompt-cheatsheet.md](workflows/prompt-cheatsheet.md)
 - [workflows/standard-pipeline.md](workflows/standard-pipeline.md)
 - [workflows/definition-of-done.md](workflows/definition-of-done.md)
+- [docs/public-development-strategy.md](docs/public-development-strategy.md)
+
+## Roadmap
+
+Near-term priorities:
+
+1. Add a public release checklist.
+2. Add a public safety scanner for repo checks.
+3. Add sanitized example tasks with acceptance criteria.
+4. Clarify which runtime components are experimental.
+5. Package the first reusable workflow for small-business AI operations.
