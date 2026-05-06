@@ -3,8 +3,11 @@
 Thumbs.db
 desktop.ini
 
-# External nested repos (managed separately)
-projects/
+# Local project repositories (managed separately; keep only registry/docs)
+projects/*
+!projects/README.md
+!projects/registry.md
+!projects/.gitkeep
 
 # Local tooling folders
 .claude/

@@ -22,6 +22,8 @@ Release status:
 |---|---|
 | Operating policy | Available |
 | Workflow docs | Available |
+| Workspace skeleton | Available |
+| Project registry skeleton | Available |
 | Local skills | Available |
 | Task gate scripts | Available |
 | Memory service | Experimental |
@@ -34,6 +36,8 @@ Release status:
 - Operating rules for working with Codex and agentic tools
 - Reusable skills for planning, requirements, coding, testing, security, DevOps, UI, and AI workflows
 - Workflow docs for task intake, definition of done, client demo gates, and operating review
+- A `workspace/` area for task notes, artifacts, templates, draft automations, and short-lived memory
+- A `projects/` area for registering local projects managed through the workspace
 - Scripts for task checks, daily reviews, context export, and memory-aware skill runs
 - A local memory-service prototype with reviewed-memory direction
 - An orchestrator helper prototype for context composition and handoff workflows
@@ -66,6 +70,8 @@ codex-hub-workspace/
 +-- .codex/skills/
 +-- scripts/
 +-- workflows/
++-- workspace/
++-- projects/
 +-- memory-service/
 +-- orchestrator/
 +-- apps/webos/
@@ -81,6 +87,8 @@ codex-hub-workspace/
 | `.codex/skills/` | Local Codex skills used by the workspace. |
 | `scripts/` | PowerShell/CMD helpers for checks, task gates, reviews, and context export. |
 | `workflows/` | Operating docs for prompt patterns, pipeline, DoD, demo gates, and reviews. |
+| `workspace/` | Operational state: task notes, artifacts, templates, draft automations, and short-lived memory. |
+| `projects/` | Local project registry and ignored project folders managed by the workspace. |
 | `memory-service/` | Experimental reviewed-memory backend. |
 | `orchestrator/` | Experimental helper pipeline for context composition and handoff generation. |
 | `apps/webos/` | Experimental localhost dashboard for workspace visibility, checks, actions, and reviewed memory candidates. |
@@ -103,6 +111,61 @@ A task trace should capture:
 - progress
 - verification
 - remaining uncertainty
+
+## How To Use The Workspace
+
+1. Clone the repo.
+
+```bash
+git clone <repo-url>
+cd codex-hub-workspace
+```
+
+2. Add or clone your real work projects under `projects/`.
+
+```text
+projects/
++-- my-client-site/
+`-- internal-automation/
+```
+
+3. Register each project in `projects/registry.md`.
+
+```markdown
+| my-client-site | `projects/my-client-site/` | `github.com/me/my-client-site` | private | active | 2026-05-06 |
+```
+
+4. Create a task note for non-trivial work.
+
+```powershell
+Copy-Item workspace/templates/task.md workspace/tasks/2026-05-06-my-task.md
+```
+
+5. Work through the task flow.
+
+```text
+scope -> acceptance criteria -> implementation -> verification -> closeout
+```
+
+6. Put reusable outputs in `workspace/artifacts/`.
+
+7. Use WebOS when you want a local dashboard.
+
+```powershell
+cd apps/webos
+npm install
+npm start
+```
+
+Open `http://127.0.0.1:5173`.
+
+## Important Storage Rules
+
+- `projects/` is for local project source. Project folders are ignored by this repo by default.
+- `workspace/tasks/` is for task traces, not product source.
+- `workspace/artifacts/` is for reusable outputs worth keeping.
+- `.orchestrator/`, `node_modules/`, `dist/`, and runtime output should not be committed.
+- Each project inside `projects/` should manage its own git history and remote.
 
 ## Why This Exists
 
@@ -132,6 +195,8 @@ This project is not:
 
 - [QUICK-START.md](QUICK-START.md)
 - [AGENTS.md](AGENTS.md)
+- [workspace/README.md](workspace/README.md)
+- [projects/README.md](projects/README.md)
 - [workflows/prompt-cheatsheet.md](workflows/prompt-cheatsheet.md)
 - [workflows/standard-pipeline.md](workflows/standard-pipeline.md)
 - [workflows/definition-of-done.md](workflows/definition-of-done.md)
