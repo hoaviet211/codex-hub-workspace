@@ -1,0 +1,7 @@
+interface:
+  display_name: "Task Manager"
+  short_description: "Track and sequence tasks within a project"
+  default_prompt: "Use $task-manager to list the current tasks, statuses, dependencies, blockers, and the next task to do."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Database Design"
+  short_description: "Design schemas, indexes, and migrations"
+  default_prompt: "Use $database-design to design the schema, indexes, migrations, and data-access patterns for this feature."
+
+policy:
+  allow_implicit_invocation: true

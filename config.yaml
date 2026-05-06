@@ -1,0 +1,274 @@
+version: 1
+
+orchestrator:
+  name: Codex Orchestrator
+  system: Codex-Hub
+  default_operator_profile: gpt-5.3-codex
+  philosophy:
+    - "User is the Brain; project is the Body."
+    - "Minimize context tokens and load only what is needed."
+    - "Use one text box to orchestrate multi-agent execution."
+    - "Prefer git worktree isolation for parallel streams."
+    - "Default to pragmatic, reusable, token-efficient execution tuned for gpt-5.3-codex."
+  memory:
+    entrypoint: scripts/run-skill-with-memory.ps1
+    canonical_backend: memory-service
+    candidate_review_required: true
+    official_retrieval: approved_canonical_only
+    scope:
+      workspace: customer
+      project: project
+      session: task run
+    roles:
+      codex: "primary executor and integrator"
+      webos: "localhost cockpit, context gateway, and review surface"
+      gemma4: "memory curator/context compressor only"
+      lco: "helper-only; deprecated as agent layer"
+    retrieval_limit: 8
+    fallback: workspace/memory.md
+
+skills:
+  - name: planner
+    path: .codex/skills/planner
+    category: planning
+    summary: Break down work into phases, milestones, dependencies, and execution steps with minimal wasted context.
+  - name: business-analyst
+    path: .codex/skills/business-analyst
+    category: analysis
+    summary: Turn requests into business requirements, user stories, acceptance criteria, and scope boundaries.
+  - name: client-intake
+    path: .codex/skills/client-intake
+    category: analysis
+    summary: Turn raw client messages into a structured project brief, scope, open questions, and a handoff for planning.
+  - name: freelancer-requirements
+    path: .codex/skills/freelancer-requirements
+    category: analysis
+    summary: Turn a clarified client brief into buildable requirements, scope boundaries, acceptance criteria, and decision points.
+  - name: freelancer-assistant
+    path: .codex/skills/freelancer-assistant
+    category: analysis
+    summary: Coordinate incoming client requests, classify request state, and route to the next best skill.
+  - name: project-state
+    path: .codex/skills/project-state
+    category: operations
+    summary: Track and update the lifecycle state of a client project, including blockers, milestones, demo readiness, and release readiness.
+  - name: task-manager
+    path: .codex/skills/task-manager
+    category: operations
+    summary: Track, update, and sequence individual tasks within a project, including dependencies, blockers, owners, and completion status.
+  - name: codex-hub-runtime
+    path: .codex/skills/codex-hub-runtime
+    category: operations
+    summary: Connect Codex Hub runtime apps, memory-service, orchestrator/LCO, workspace state, and skill execution hooks.
+  - name: gemma-memory-curator
+    path: .codex/skills/gemma-memory-curator
+    category: ai
+    summary: Use local Gemma4 as a bounded memory curator and context compressor that proposes reviewed candidates only.
+  - name: data-analysis
+    path: .codex/skills/data-analysis
+    category: analysis
+    summary: Analyze metrics, customer behavior, operational data, and patterns to derive insight, algorithm direction, and optimization opportunities.
+  - name: ai-builder
+    path: .codex/skills/ai-builder
+    category: ai
+    summary: Design and implement LLM, RAG, agent, tool-calling, prompt, memory, evaluation, and automation workflows.
+  - name: system-design
+    path: .codex/skills/system-design
+    category: architecture
+    summary: Design high-level systems, APIs, data flow, scaling assumptions, and key technical tradeoffs.
+  - name: architecture-design
+    path: .codex/skills/architecture-design
+    category: architecture
+    summary: Define module boundaries, service topology, responsibilities, and technical decision records for implementation.
+  - name: database-design
+    path: .codex/skills/database-design
+    category: architecture
+    summary: Design schemas, indexes, migrations, constraints, query patterns, and data-access boundaries.
+  - name: app-coder
+    path: .codex/skills/app-coder
+    category: coding
+    summary: Implement general application features across backend, frontend, integration, and shared app logic.
+  - name: frontend-web-ui
+    path: .codex/skills/frontend-web-ui
+    category: coding
+    summary: Build production web UI, app screens, dashboards, and reusable frontend components with implementation fidelity.
+  - name: ui-design
+    path: .codex/skills/ui-design
+    category: design
+    summary: Define visual language, components, layout systems, interaction states, and UI behavior before implementation.
+  - name: landing-page-builder
+    path: .codex/skills/landing-page-builder
+    category: design
+    summary: Create marketing sites and landing pages with strong hierarchy, message clarity, and conversion-oriented structure.
+  - name: tester
+    path: .codex/skills/tester
+    category: qa
+    summary: Design test strategy, test cases, regression coverage, bug reproduction, and verification checklists.
+  - name: secure-coding
+    path: .codex/skills/secure-coding
+    category: security
+    summary: Secure application code against OWASP risks, weak auth, unsafe input handling, dependency issues, and secret leakage.
+  - name: security-guardrails
+    path: .codex/skills/security-guardrails
+    category: security
+    summary: Apply baseline project controls for firewall, SSL/TLS, rate limiting, logging, monitoring, and backup readiness.
+  - name: devops-pipeline
+    path: .codex/skills/devops-pipeline
+    category: devops
+    summary: Design and review CI/CD, Docker workflows, release automation, monitoring, and rollback procedures.
+  - name: iac-best-practices
+    path: .codex/skills/iac-best-practices
+    category: infrastructure
+    summary: Structure Terraform/OpenTofu safely with modules, remote state, drift detection, and plan-first workflows.
+  - name: cloud-vps-deploy
+    path: .codex/skills/cloud-vps-deploy
+    category: infrastructure
+    summary: Deploy and harden applications on Ubuntu VPS with Docker, Nginx, systemd, fail2ban, backups, and zero-downtime rollout.
+  - name: cloudflare-deploy
+    path: .codex/skills/cloudflare-deploy
+    category: edge
+    summary: Deploy Workers, Pages, DNS, WAF, rate limiting, and Cloudflare-managed edge security with safe rollout patterns.
+  - name: secure-devops
+    path: .codex/skills/secure-devops
+    category: platform
+    summary: Combine secure coding, infra review, deployment hardening, and production safety checks in one workflow.
+
+recommended_mcp_servers:
+  - name: terraform
+    purpose: Terraform/OpenTofu plan inspection, state-aware review, and IaC workflows.
+    recommended_for:
+      - iac-best-practices
+      - secure-devops
+      - cloudflare-deploy
+  - name: docker
+    purpose: Dockerfile, compose, image build, and container runtime inspection.
+    recommended_for:
+      - devops-pipeline
+      - cloud-vps-deploy
+      - secure-devops
+  - name: cloudflare
+    purpose: Workers, Pages, DNS, WAF, rulesets, and Cloudflare account automation.
+    recommended_for:
+      - cloudflare-deploy
+      - secure-devops
+  - name: github
+    purpose: CI/CD workflow inspection, PR automation, release pipelines, and deployment traceability.
+    recommended_for:
+      - planner
+      - codex-hub-runtime
+      - business-analyst
+      - data-analysis
+      - ai-builder
+      - tester
+      - devops-pipeline
+      - database-design
+      - secure-devops
+      - secure-coding
+  - name: playwright
+    purpose: Browser automation, end-to-end verification, UI regression checks, and interactive web flow testing.
+    recommended_for:
+      - tester
+      - frontend-web-ui
+      - landing-page-builder
+  - name: google-drive
+    purpose: Spreadsheet and document access for analysis of tabular data, reports, and customer-facing operational artifacts.
+    recommended_for:
+      - data-analysis
+      - business-analyst
+  - name: shell
+    purpose: VPS and local host inspection, SSH-driven deployment, service checks, and rollback operations.
+    recommended_for:
+      - data-analysis
+      - cloud-vps-deploy
+      - devops-pipeline
+      - secure-devops
+  - name: docker-mcp
+    purpose: Catalog-backed MCP gateway for GitHub Official, Context7, Docker Hub, and related Docker-managed tooling.
+    recommended_for:
+      - app-coder
+      - frontend-web-ui
+      - data-analysis
+      - tester
+      - devops-pipeline
+
+# Local Coding Orchestrator
+local_coding_orchestrator:
+  enabled: true
+  role: "helper-only"
+  agent_layer_deprecated: true
+  path: orchestrator/
+  cli: "node orchestrator/dist/cli/index.js"
+  requires_ollama: true
+  model: "gemma4:e4b"
+
+operator_preferences:
+  persistence_rule: "Store stable operator intent in repo-level policy/config so future sessions can reload it without user restatement."
+  primary_model_profile: "gpt-5.3-codex"
+  escalation_model_profile: "Use deeper analysis only for high-ambiguity, high-risk, architecture-heavy, or hard reasoning tasks."
+  priorities:
+    - "Tool-first thinking: prefer creating reusable scripts, templates, wrappers, checkers, and report generators when they reduce repeated token or manual cost."
+    - "Process improvement thinking: continuously inspect workflow, data flow, source-of-truth clarity, operator ergonomics, and observability for improvement opportunities."
+    - "Reuse and maintenance thinking: prefer outputs that future sessions can reload quickly and maintain safely."
+  default_task_checks:
+    - "Should this task produce a reusable tool?"
+    - "Is the current process or data workflow weaker than it should be?"
+    - "Should the result be promoted to policy, config, script, template, or artifact?"
+
+workflow:
+  standard_pipeline: workflows/standard-pipeline.md
+  context_operating_model: workflows/context-operating-model.md
+  definition_of_done: workflows/definition-of-done.md
+  client_demo_gate: workflows/client-demo-gate.md
+  enforce_security_review: true
+  enforce_devops_review_after_test: true
+  enforce_acceptance_criteria_before_implement: true
+  enforce_dod_check_before_done: true
+  enforce_client_demo_gate: standard,rigorous
+  read_policy: task-first
+  cold_archive_policy: last-resort
+  prompt_required_fields:
+    - Muc tieu
+    - Pham vi
+    - Rang buoc
+    - Che do
+    - Quy trinh
+  prompt_required_fields_non_trivial:
+    - Context can doc
+    - Output can cap nhat
+  ignore_policy:
+    broad_scan_default: deny
+    metadata_scan_allowed_for:
+      - workspace/tasks
+      - workspace/artifacts
+    last_resort_paths:
+      - workspace/artifacts/workspace-full-context.md
+
+workspace:
+  root: workspace
+  philosophy:
+    - "Use workspace as lightweight operational state, not as a permanent database."
+    - "Read only the minimum workspace files needed for the current task."
+    - "Keep durable policy in AGENTS, workflows, config, or skills."
+    - "Default to task-first reading and aggressive pruning."
+  paths:
+    memory: workspace/memory.md
+    tasks: workspace/tasks
+    artifacts: workspace/artifacts
+    automations: workspace/automations
+    templates: workspace/templates
+  policies:
+    read_policy: task-first
+    cold_archive_policy: last-resort
+    workspace_retention: aggressive-prune
+    automations_scope: design-only
+    prompt_context_required_for_non_trivial: true
+    acceptance_criteria_required_before_implement: true
+    bug_report_template: workspace/templates/bug-report.md
+    task_template: workspace/templates/task.md
+    post_mortem_template: workspace/templates/post-mortem.md
+  conventions:
+    - "Use one Markdown file per multi-step task under workspace/tasks. Start from workspace/templates/task.md."
+    - "Store generated specs, reviews, post-mortems, and handoff notes under workspace/artifacts when worth reusing."
+    - "Track recurring workflow ideas under workspace/automations before promoting them to real automation."
+    - "Bug reports go in workspace/tasks/ using the bug-report template. Closed bugs older than 30 days can be archived."
+    - "Never edit files in workspace/templates/ directly. Copy and rename them before filling in."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Freelancer Requirements"
+  short_description: "Turn client brief into buildable requirements and scope"
+  default_prompt: "Use $freelancer-requirements to turn this clarified client brief into requirements, scope boundaries, acceptance criteria, and the next skill to route to."
+
+policy:
+  allow_implicit_invocation: true

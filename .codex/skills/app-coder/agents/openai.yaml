@@ -1,0 +1,7 @@
+interface:
+  display_name: "App Coder"
+  short_description: "Implement product features across the app"
+  default_prompt: "Use $app-coder to implement this feature across the necessary app layers with minimal, testable changes."
+
+policy:
+  allow_implicit_invocation: true

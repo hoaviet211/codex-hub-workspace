@@ -1,0 +1,7 @@
+interface:
+  display_name: "Security Guardrails"
+  short_description: "Apply baseline production security controls"
+  default_prompt: "Use $security-guardrails to audit this project for firewall, TLS, rate limit, logging, and backup gaps."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,12 @@
+{
+  "workspaceId": "demo-workspace",
+  "projectId": "demo-project",
+  "sessionId": "11111111-1111-1111-1111-111111111111",
+  "userId": "demo-user",
+  "role": "user",
+  "content": "We decided to keep task notes in workspace/tasks and use Postgres for durable memory.",
+  "turnIndex": 1,
+  "metadata": {
+    "taskId": "demo-task"
+  }
+}

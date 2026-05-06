@@ -1,0 +1,7 @@
+interface:
+  display_name: "Tester"
+  short_description: "Design QA strategy and regression coverage"
+  default_prompt: "Use $tester to create a test plan, regression checklist, and verification steps for this change."
+
+policy:
+  allow_implicit_invocation: true

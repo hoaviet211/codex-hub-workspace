@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Builder"
+  short_description: "Build LLM, RAG, and agent workflows"
+  default_prompt: "Use $ai-builder to design the AI workflow, model/tool contracts, retrieval or memory, evaluation, and implementation path."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "IaC Best Practices"
+  short_description: "Review Terraform and OpenTofu safely"
+  default_prompt: "Use $iac-best-practices to review this Terraform or OpenTofu change for plan safety, state hygiene, and module design."
+
+policy:
+  allow_implicit_invocation: true

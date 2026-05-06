@@ -1,0 +1,7 @@
+interface:
+  display_name: "Freelancer Assistant"
+  short_description: "Coordinate incoming client requests and route to the next skill"
+  default_prompt: "Use $freelancer-assistant to classify this client request, identify the project, and route it to the next best skill with the minimum necessary questions."
+
+policy:
+  allow_implicit_invocation: true

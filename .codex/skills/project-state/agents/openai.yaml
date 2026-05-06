@@ -1,0 +1,7 @@
+interface:
+  display_name: "Project State"
+  short_description: "Track the lifecycle state of a client project"
+  default_prompt: "Use $project-state to identify the current project phase, blockers, next gate, and the next action."
+
+policy:
+  allow_implicit_invocation: true

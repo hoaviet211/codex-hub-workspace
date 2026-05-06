@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex Hub Runtime"
+  short_description: "Connect Hub apps, memory, and orchestrator"
+  default_prompt: "Use $codex-hub-runtime to connect or debug Codex Hub apps, memory-service, orchestrator/LCO, workspace state, and skill execution hooks."
+
+policy:
+  allow_implicit_invocation: true

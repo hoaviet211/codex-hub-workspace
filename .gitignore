@@ -1,0 +1,75 @@
+# OS / File Explorer
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# External nested repos (managed separately)
+projects/
+
+# Local tooling folders
+.claude/
+.orchestrator/
+.continue/
+.codex/config.toml
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Dependencies
+node_modules/
+
+# Build / cache artifacts
+dist/
+build/
+coverage/
+.cache/
+.turbo/
+.next/
+.open-next/
+.wrangler/
+.vercel/
+out/
+tmp/
+temp/
+*.tmp
+.eslintcache
+.parcel-cache/
+.rspack-profile-*/
+*.tsbuildinfo
+next-env.d.ts
+.dev.vars
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Runtime / process files
+*.pid
+*.seed
+*.pid.lock
+
+# Monorepo/local tooling
+.gitnexus
+.worktrees/

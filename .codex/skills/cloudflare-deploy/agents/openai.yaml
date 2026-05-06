@@ -1,0 +1,7 @@
+interface:
+  display_name: "Cloudflare Deploy"
+  short_description: "Deploy Cloudflare workloads safely"
+  default_prompt: "Use $cloudflare-deploy to deploy this Cloudflare Worker, Pages app, or DNS/WAF change with secure rollout and plan review."
+
+policy:
+  allow_implicit_invocation: true

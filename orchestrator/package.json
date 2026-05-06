@@ -1,0 +1,30 @@
+{
+  "name": "local-coding-orchestrator",
+  "version": "0.1.0",
+  "description": "Local Coding Orchestrator — Gemma 4 agent layer for Codex Hub",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "lco": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "lco": "node dist/cli/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc && node dist/__tests__/integration.test.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "ollama": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

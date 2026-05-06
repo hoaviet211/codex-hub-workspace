@@ -1,0 +1,7 @@
+interface:
+  display_name: "Cloud VPS Deploy"
+  short_description: "Deploy and harden Ubuntu VPS workloads"
+  default_prompt: "Use $cloud-vps-deploy to deploy this app on an Ubuntu VPS with Docker, Nginx, TLS, backups, and safe rollout steps."
+
+policy:
+  allow_implicit_invocation: true

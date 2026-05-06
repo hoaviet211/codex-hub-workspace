@@ -1,0 +1,7 @@
+interface:
+  display_name: "Secure Coding"
+  short_description: "Harden app code against OWASP risks"
+  default_prompt: "Use $secure-coding to review this code path for OWASP risks, auth flaws, validation gaps, and secret exposure."
+
+policy:
+  allow_implicit_invocation: true

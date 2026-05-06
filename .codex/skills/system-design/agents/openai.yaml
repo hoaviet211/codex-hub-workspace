@@ -1,0 +1,7 @@
+interface:
+  display_name: "System Design"
+  short_description: "Design systems, APIs, and data flow"
+  default_prompt: "Use $system-design to design the services, APIs, data flow, and tradeoffs for this system."
+
+policy:
+  allow_implicit_invocation: true

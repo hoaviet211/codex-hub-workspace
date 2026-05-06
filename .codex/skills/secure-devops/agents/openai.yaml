@@ -1,0 +1,7 @@
+interface:
+  display_name: "Secure DevOps"
+  short_description: "Combine security review with safe deploys"
+  default_prompt: "Use $secure-devops to review this release across code security, IaC changes, CI/CD, and deployment safety."
+
+policy:
+  allow_implicit_invocation: true

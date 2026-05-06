@@ -1,0 +1,7 @@
+interface:
+  display_name: "Landing Page Builder"
+  short_description: "Build conversion-focused marketing pages"
+  default_prompt: "Use $landing-page-builder to create a landing page with clear messaging, section hierarchy, and strong CTAs."
+
+policy:
+  allow_implicit_invocation: true

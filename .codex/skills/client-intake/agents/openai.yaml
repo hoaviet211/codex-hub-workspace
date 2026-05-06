@@ -1,0 +1,7 @@
+interface:
+  display_name: "Client Intake"
+  short_description: "Turn client messages into a structured brief and handoff"
+  default_prompt: "Use $client-intake to turn this client message into a brief, scope, assumptions, open questions, risks, and the next skill to route to."
+
+policy:
+  allow_implicit_invocation: true

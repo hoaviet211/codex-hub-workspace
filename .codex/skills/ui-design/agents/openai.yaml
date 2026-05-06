@@ -1,0 +1,7 @@
+interface:
+  display_name: "UI Design"
+  short_description: "Define visual systems and interaction rules"
+  default_prompt: "Use $ui-design to define the layout, states, hierarchy, and visual direction for this interface."
+
+policy:
+  allow_implicit_invocation: true

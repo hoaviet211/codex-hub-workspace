@@ -1,0 +1,7 @@
+interface:
+  display_name: "Business Analyst"
+  short_description: "Turn requests into clear product requirements"
+  default_prompt: "Use $business-analyst to convert this idea into user stories, scope, and acceptance criteria."
+
+policy:
+  allow_implicit_invocation: true

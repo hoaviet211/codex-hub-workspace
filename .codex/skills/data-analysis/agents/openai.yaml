@@ -1,0 +1,7 @@
+interface:
+  display_name: "Data Analysis"
+  short_description: "Turn data and behavior into insight"
+  default_prompt: "Use $data-analysis to analyze this data, find behavioral patterns, and propose optimization or algorithm directions."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Architecture Design"
+  short_description: "Define modules, boundaries, and topology"
+  default_prompt: "Use $architecture-design to define the module boundaries, responsibilities, and runtime topology for this project."
+
+policy:
+  allow_implicit_invocation: true

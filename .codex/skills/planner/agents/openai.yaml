@@ -1,0 +1,7 @@
+interface:
+  display_name: "Planner"
+  short_description: "Break work into concrete execution steps"
+  default_prompt: "Use $planner to turn this request into a compact execution plan with scope, assumptions, milestones, dependencies, risks, validation, project state, task breakdown, and the next concrete action."
+
+policy:
+  allow_implicit_invocation: true

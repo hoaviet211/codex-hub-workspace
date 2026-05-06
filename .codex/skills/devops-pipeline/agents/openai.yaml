@@ -1,0 +1,7 @@
+interface:
+  display_name: "DevOps Pipeline"
+  short_description: "Design safer CI/CD and Docker workflows"
+  default_prompt: "Use $devops-pipeline to review this CI/CD flow, Docker setup, monitoring, and rollback plan."
+
+policy:
+  allow_implicit_invocation: true

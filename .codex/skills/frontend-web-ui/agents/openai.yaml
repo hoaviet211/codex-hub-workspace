@@ -1,0 +1,7 @@
+interface:
+  display_name: "Frontend Web UI"
+  short_description: "Build production web UI and components"
+  default_prompt: "Use $frontend-web-ui to implement this screen, component set, or dashboard as production-ready frontend code."
+
+policy:
+  allow_implicit_invocation: true
