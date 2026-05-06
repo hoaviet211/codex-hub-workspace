@@ -153,6 +153,7 @@ It is intentionally local-first, review-first, and workflow-first.
 I am starting to document the build in public through:
 
 - this README
+- [Public Development Strategy](docs/public-development-strategy.md)
 - concise repo maps
 - workflow artifacts
 - development notes
